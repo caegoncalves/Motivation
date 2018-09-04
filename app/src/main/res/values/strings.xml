@@ -4,4 +4,7 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="user_name">Informe seu nome</string>
+    <string name="save">Salvar</string>
+    <string name="new_phrase">Nova frase</string>
 </resources>
