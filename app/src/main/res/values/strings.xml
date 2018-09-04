@@ -7,4 +7,5 @@
     <string name="user_name">Informe seu nome</string>
     <string name="save">Salvar</string>
     <string name="new_phrase">Nova frase</string>
+    <string name="notice_no_name">Por favor, informe um nome.</string>
 </resources>
