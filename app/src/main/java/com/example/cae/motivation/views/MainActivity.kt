@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.cae.motivation.R
+import com.example.cae.motivation.mock.Mock
 import com.example.cae.motivation.util.AppConstants
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -11,6 +12,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private var mFilter: Int = AppConstants.PHRASE_FILTER.ALL
+    private val mMock = Mock()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,12 +21,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setListeners()
 
         handleFilter(R.id.imageInfinity)
+        refreshPhrase()
     }
 
     override fun onClick(view: View?) {
-        val id = view?.id
+        val id = view!!.id
 
-        val listId = listOf(R.id.imageHappy, R.id.imageInfinity, R.id.imageSun)
+        val listId = listOf(R.id.imageInfinity, R.id.imageSun, R.id.imageHappy)
 
         if (id in listId) {
             handleFilter(id)
@@ -33,11 +36,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun refreshPhrase() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private fun setListeners() {
+
+        imageInfinity.setOnClickListener(this)
+        imageHappy.setOnClickListener(this)
+        imageSun.setOnClickListener(this)
+        buttonNewPhrase.setOnClickListener(this)
+
     }
 
-    private fun handleFilter(id: Int?) {
+    private fun handleFilter(id: Int) {
 
         imageInfinity.setImageResource(R.drawable.ic_infinity_unselected)
         imageHappy.setImageResource(R.drawable.ic_happy_unselected)
@@ -53,14 +61,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             mFilter = AppConstants.PHRASE_FILTER.HAPPY
             imageHappy.setImageResource(R.drawable.ic_happy_selected)
         }
-    }
-
-    private fun setListeners() {
-
-        imageInfinity.setOnClickListener(this)
-        imageHappy.setOnClickListener(this)
-        imageSun.setOnClickListener(this)
-        buttonNewPhrase.setOnClickListener(this)
 
     }
+
+    private fun refreshPhrase() {
+        textPhrase.text = mMock.getPhrase(mFilter)
+    }
+
 }
